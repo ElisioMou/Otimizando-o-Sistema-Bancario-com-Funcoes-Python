@@ -13,6 +13,7 @@ def menu():
     Digite uma opção: """
 
     return input(textwrap.dedent(menu))
+    
 def depositar(saldo, valor, extrato, /):
     if valor > 0:
         saldo += valor
@@ -22,6 +23,7 @@ def depositar(saldo, valor, extrato, /):
     else:
         print("\n Falha! Valor inválido.")
     return saldo, extrato
+    
 def sacar(*, saldo, valor, extrato, limite, numero_saques, limite_saques):
     excedeu_saldo = valor > saldo
     excedeu_limite = valor > limite
@@ -42,11 +44,13 @@ def sacar(*, saldo, valor, extrato, limite, numero_saques, limite_saques):
     else:
         print("\n Falha! Valor informado é inválido.")
     return saldo, extrato
+    
 def exibir_extrato(saldo, /, *, extrato):
     print("\n================ EXTRATO ================")
     print("Não foram realizadas movimentações." if not extrato else extrato)
     print(f"Saldo:\t\tR$ {saldo:.2f}")
     print("==========================================")
+    
 def novo_usuario(usuarios):
     cpf = input("Informe o CPF (somente números): ")
     usuario = filtrar_usuario(cpf, usuarios)
@@ -58,6 +62,7 @@ def novo_usuario(usuarios):
     if usuario:
         print("\n Já existe usuário com esse CPF!")
         return
+        
     nome = input("Informe o nome completo: ")
     data_nascimento = input("Informe a data de nascimento (dd-mm-aaaa): ")
     endereco = input("Informe o endereço (logradouro, nro - bairro - cidade/sigla estado): ")
